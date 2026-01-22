@@ -1,0 +1,25 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+
+// | Key          | Value                                                                 | What It Does                   | Why It’s Used                    |
+// | ------------ | --------------------------------------------------------------------- | ------------------------------ | -------------------------------- |
+// | `files`      | `[]`                                                                  | No files are directly included | Uses project references instead  |
+// | `references` | `[{ path: "./tsconfig.app.json" }, { path: "./tsconfig.node.json" }]` | Links multiple TS configs      | Enables multi-project setup      |
+// | `path`       | `./tsconfig.app.json`                                                 | Refers to frontend TS config   | Type-checks React/Vite app       |
+// | `path`       | `./tsconfig.node.json`                                                | Refers to Node TS config       | Type-checks Vite config, scripts |
+
+
+// Big Picture (Very Important)
+// tsconfig.json   (root / orchestrator)
+//    ├── tsconfig.app.json   (frontend / React)
+//    └── tsconfig.node.json  (Node / tooling)
+
+
+// ✔️ Clean separation
+// ✔️ Faster builds
+// ✔️ Better scalability

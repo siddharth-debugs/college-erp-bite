@@ -1,0 +1,689 @@
+  @custom-variant dark (&:is(.dark *));
+
+  :root {
+    --font-size: 16px;
+    --primary-color: #fff;
+    --secondary-color: #7f56da;
+    --text-color: #222f3e;
+    --background: #ffffff;
+    --foreground: #222f3e;
+    --card: #ffffff;
+    --card-foreground: #222f3e;
+    --popover: #ffffff;
+    --popover-foreground: #222f3e;
+    --primary: #7f56da;
+    --primary-foreground: #ffffff;
+    --secondary: #f8f6fc;
+    --secondary-foreground: #7f56da;
+    --muted: #ececf0;
+    --muted-foreground: #717182;
+    --accent: #e9ebef;
+    --accent-foreground: #222f3e;
+    --destructive: #d4183d;
+    --destructive-foreground: #ffffff;
+    --border: rgba(0, 0, 0, 0.1);
+    --input: transparent;
+    --input-background: #f3f3f5;
+    --switch-background: #cbced4;
+    --font-weight-medium: 500;
+    --font-weight-normal: 400;
+    --ring: #7f56da;
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --radius: 0.625rem;
+    --sidebar: #ffffff;
+    --sidebar-foreground: #222f3e;
+    --sidebar-primary: #7f56da;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #f8f6fc;
+    --sidebar-accent-foreground: #7f56da;
+    --sidebar-border: rgba(0, 0, 0, 0.1);
+    --sidebar-ring: #7f56da;
+  }
+
+  .dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.145 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.145 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.985 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    --border: oklch(0.269 0 0);
+    --input: oklch(0.269 0 0);
+    --ring: oklch(0.439 0 0);
+    --font-weight-medium: 500;
+    --font-weight-normal: 400;
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(0.269 0 0);
+    --sidebar-ring: oklch(0.439 0 0);
+  }
+
+  @theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-input-background: var(--input-background);
+    --color-switch-background: var(--switch-background);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+  }
+
+  @layer base {
+    * {
+      @apply border-border outline-ring/50;
+    }
+
+    body {
+      @apply bg-background text-foreground;
+    }
+
+    /**
+    * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+    * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+    */
+
+    html {
+      font-size: var(--font-size);
+    }
+
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    /* Cross-browser consistent form elements */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="search"],
+    input[type="date"],
+    input[type="time"],
+    input[type="datetime-local"],
+    textarea,
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      padding: 0.625rem 1rem;
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+      color: #222f3e;
+      transition: all 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="number"]:focus,
+    input[type="tel"]:focus,
+    input[type="url"]:focus,
+    input[type="search"]:focus,
+    input[type="date"]:focus,
+    input[type="time"]:focus,
+    input[type="datetime-local"]:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: #7f56da;
+      ring: 2px;
+      ring-color: rgba(127, 86, 218, 0.2);
+    }
+
+    /* Custom select dropdown arrow for all browsers including Safari */
+    select:not(.appearance-none) {
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 1.25rem;
+      padding-right: 2.5rem;
+    }
+
+    /* Remove default select arrow in IE */
+    select::-ms-expand {
+      display: none;
+    }
+
+    /* Consistent placeholder styling */
+    input::placeholder,
+    textarea::placeholder {
+      color: #9ca3af;
+      opacity: 1;
+    }
+
+    /* Consistent disabled state */
+    input:disabled,
+    textarea:disabled,
+    select:disabled {
+      background-color: #f3f4f6;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    /* Hide scrollbar for sidebar navigation */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .scrollbar-hide {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+
+    /* Smooth scrolling for all browsers */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Fix for Safari iOS momentum scrolling */
+    body {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Ensure transforms work in Safari */
+    .translate-x-0,
+    .translate-x-full,
+    .-translate-x-full {
+      -webkit-transform: translateX(var(--tw-translate-x));
+      transform: translateX(var(--tw-translate-x));
+    }
+
+    /* Fix for Safari flex issues */
+    .flex {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+
+    .flex-col {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
+
+    /* Fix for Safari sticky positioning */
+    .sticky {
+      position: -webkit-sticky;
+      position: sticky;
+    }
+
+    /* Smooth transitions for all browsers */
+    .transition-all {
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+    }
+
+    .transition-colors {
+      -webkit-transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+      -moz-transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+      -o-transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .transition-transform {
+      -webkit-transition: -webkit-transform 0.2s ease;
+      -moz-transition: -moz-transform 0.2s ease;
+      -o-transition: -o-transform 0.2s ease;
+      transition: transform 0.2s ease;
+    }
+
+    /* Fix for Safari backdrop blur */
+    .backdrop-blur {
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Ensure rounded corners work in Safari */
+    .rounded,
+    .rounded-lg,
+    .rounded-xl {
+      -webkit-border-radius: var(--radius);
+      border-radius: var(--radius);
+    }
+
+    /* Fix for Safari shadow rendering */
+    .shadow,
+    .shadow-sm,
+    .shadow-md,
+    .shadow-lg,
+    .shadow-xl {
+      -webkit-box-shadow: var(--tw-shadow);
+      box-shadow: var(--tw-shadow);
+    }
+
+    /* Fix for Chrome/Safari button focus outline */
+    button:focus-visible {
+      outline: 2px solid #7f56da;
+      outline-offset: 2px;
+    }
+
+    button:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    /* Prevent text size adjustment in Safari iOS */
+    html {
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    
+    /* Sonner toast close button positioning */
+    [data-sonner-toast] {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+    }
+
+    [data-sonner-toast] [data-close-button] {
+      position: absolute !important;
+      left: auto !important;
+      right: 8px !important;
+      top: 8px !important;
+      transform: none !important;
+      margin: 0 !important;
+    }
+
+    [data-sonner-toast] [data-content] {
+      padding-right: 40px !important;
+    }
+
+    [data-sonner-toast] [data-icon] {
+      margin-right: 12px !important;
+    }
+
+    /* Success toast styling */
+    [data-sonner-toast][data-type="success"] {
+      background-color: #f0fdf4 !important;
+      border: 2px solid #22c55e !important;
+      color: #166534 !important;
+    }
+
+    [data-sonner-toast][data-type="success"] [data-icon] {
+      color: #22c55e !important;
+    }
+
+    /* Error toast styling */
+    [data-sonner-toast][data-type="error"] {
+      background-color: #fef2f2 !important;
+      border: 2px solid #ef4444 !important;
+      color: #991b1b !important;
+    }
+
+    [data-sonner-toast][data-type="error"] [data-icon] {
+      color: #ef4444 !important;
+    }
+
+    /* Fade in up animation for login cards */
+    @keyframes fade-in-up {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    /* Tooltip fade in animation */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.2s ease-out forwards;
+    }
+
+    /* Mobile viewport fixes for Safari and Chrome */
+    @supports (-webkit-touch-callout: none) {
+      /* iOS Safari specific fixes */
+      .h-screen {
+        height: -webkit-fill-available;
+      }
+    }
+
+    /* Fix for mobile browsers address bar */
+    @media screen and (max-width: 1024px) {
+      .h-screen {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+      }
+    }
+
+    /* Ensure overflow scrolling works on mobile */
+    .overflow-auto,
+    .overflow-y-auto {
+      -webkit-overflow-scrolling: touch;
+      overflow-scrolling: touch;
+    }
+
+    /* Fix for position fixed elements in Safari */
+    .fixed {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    /* Responsive Table Styles */
+    @media screen and (max-width: 768px) {
+      /* Make tables horizontally scrollable on mobile */
+      .overflow-x-auto {
+        -webkit-overflow-scrolling: touch;
+        overflow-x: auto;
+        max-width: 100vw;
+      }
+
+      /* Ensure table cells don't wrap on mobile */
+      table th,
+      table td {
+        white-space: nowrap;
+        min-width: fit-content;
+      }
+
+      /* Make action buttons more compact on mobile */
+      table td button {
+        padding: 0.375rem;
+      }
+
+      /* Responsive pagination */
+      .pagination-container {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      /* Hide some page numbers on mobile */
+      .pagination-numbers {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        display: flex;
+        gap: 0.25rem;
+        padding: 0.25rem 0;
+      }
+
+      .pagination-numbers::-webkit-scrollbar {
+        height: 2px;
+      }
+
+      .pagination-numbers::-webkit-scrollbar-thumb {
+        background-color: rgba(127, 86, 218, 0.3);
+        border-radius: 2px;
+      }
+
+      /* Subject group responsive - ensure no horizontal overflow */
+      [data-row-index] {
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+      }
+
+      /* Ensure subject selector button doesn't overflow */
+      [data-row-index] button[type="button"] {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* Full width for dropdowns on mobile */
+      [data-row-index] > div:first-child {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      /* Checkbox row full width */
+      [data-row-index] > div:last-child {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      /* Prevent overflow from absolute positioned dropdowns */
+      [data-row-index] .absolute {
+        position: fixed !important;
+        left: 1rem !important;
+        right: 1rem !important;
+        width: auto !important;
+        max-width: calc(100vw - 2rem) !important;
+      }
+
+      /* Fee structure responsive styles */
+      .fee-components-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Ensure Select dropdowns are full width on mobile */
+      .fee-components-grid > div {
+        width: 100% !important;
+      }
+
+      /* Make sure react-select dropdowns don't overflow */
+      [class*="react-select"] {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      [class*="react-select__control"] {
+        min-width: 0 !important;
+        max-width: 100% !important;
+      }
+
+      [class*="react-select__menu"] {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      /* Prevent horizontal scroll in fee structure containers */
+      .lg\:hidden {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+      }
+
+      /* Force total cards to stack vertically */
+      [class*="space-y-"] > div {
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+
+      /* Ensure gradient cards don't overflow */
+      [class*="bg-gradient-to-r"] {
+        max-width: 100% !important;
+        width: 100% !important;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+    }
+
+    /* Tablet Responsive Styles */
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+      /* Optimize table spacing for tablets */
+      table th,
+      table td {
+        padding: 0.625rem 0.75rem;
+      }
+
+      /* Adjust pagination for tablets */
+      .pagination-container {
+        justify-content: space-between;
+      }
+    }
+
+    /* Ensure horizontal scroll indicators on touch devices */
+    @media (hover: none) and (pointer: coarse) {
+      .overflow-x-auto {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(127, 86, 218, 0.3) transparent;
+      }
+
+      .overflow-x-auto::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      .overflow-x-auto::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .overflow-x-auto::-webkit-scrollbar-thumb {
+        background-color: rgba(127, 86, 218, 0.3);
+        border-radius: 4px;
+      }
+
+      .overflow-x-auto::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(127, 86, 218, 0.5);
+      }
+    }
+
+    /* Card 3D hover effect */
+    .card-3d-hover {
+      transition: all 0.25s ease-out;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-3d-hover:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 
+        0 12px 24px -6px rgba(127, 86, 218, 0.25), 
+        0 8px 16px -8px rgba(127, 86, 218, 0.15),
+        0 0 0 1px rgba(127, 86, 218, 0.1);
+      border-color: #c084fc;
+    }
+
+    /* Custom scrollbar for student list */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f3f4f6;
+      border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #7f56da 0%, #9b72e6 100%);
+      border-radius: 10px;
+      border: 2px solid #f3f4f6;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #6d48c4 0%, #8a5fd6 100%);
+    }
+
+    /* Firefox scrollbar styling */
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: #7f56da #f3f4f6;
+    }
+  }

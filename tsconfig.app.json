@@ -1,0 +1,77 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "types": [
+      "vite/client"
+    ],
+    "skipLibCheck": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": [
+    "src"
+  ]
+}
+// | Option                         | Value                                          | What it Does                        | Why It’s Used                          |
+// | ------------------------------ | ---------------------------------------------- | ----------------------------------- | -------------------------------------- |
+// | `tsBuildInfoFile`              | `./node_modules/.tmp/tsconfig.app.tsbuildinfo` | Stores incremental build cache      | Speeds up TypeScript re-checks         |
+// | `target`                       | `ES2022`                                       | Sets JavaScript output version      | Enables modern JS features             |
+// | `useDefineForClassFields`      | `true`                                         | Uses native JS class field behavior | Avoids class field bugs                |
+// | `lib`                          | `["ES2022", "DOM", "DOM.Iterable"]`            | Adds JS & browser APIs              | Enables browser + iterable DOM support |
+// | `module`                       | `ESNext`                                       | Uses ES modules (`import/export`)   | Required for Vite bundling             |
+// | `types`                        | `["vite/client"]`                              | Adds Vite-specific typings          | Enables `import.meta.env`              |
+// | `skipLibCheck`                 | `true`                                         | Skips type-checking `node_modules`  | Faster builds                          |
+// | `moduleResolution`             | `bundler`                                      | Resolves modules like Vite          | Best for modern bundlers               |
+// | `allowImportingTsExtensions`   | `true`                                         | Allows `.ts` in import paths        | Useful for native ESM                  |
+// | `verbatimModuleSyntax`         | `true`                                         | Keeps imports unchanged             | Required for strict ESM                |
+// | `moduleDetection`              | `force`                                        | Treats all files as modules         | Prevents global scope leaks            |
+// | `noEmit`                       | `true`                                         | Prevents JS output                  | Vite handles build                     |
+// | `jsx`                          | `react-jsx`                                    | Uses new JSX transform              | No need to import `React`              |
+// | `strict`                       | `true`                                         | Enables all strict checks           | Safer & cleaner code                   |
+// | `noUnusedLocals`               | `true`                                         | Errors on unused variables          | Keeps code clean                       |
+// | `noUnusedParameters`           | `true`                                         | Errors on unused params             | Avoids messy APIs                      |
+// | `erasableSyntaxOnly`           | `true`                                         | Ensures TS syntax is removable      | Safe for bundlers                      |
+// | `noFallthroughCasesInSwitch`   | `true`                                         | Prevents switch fall-through        | Avoids logic bugs                      |
+// | `noUncheckedSideEffectImports` | `true`                                         | Warns about side-effect imports     | Prevents hidden runtime behavior       |
+// | `include`                      | `["src"]`                                      | Type-check only `src` folder        | Keeps config focused                   |
+
+
+
+// | Before (`vite-env.d.ts`)                         | Now (`types: ["vite/client"]`)                 |
+// | ------------------------------------------------ | ---------------------------------------------- |
+// | You manually wrote types for `import.meta.env`   | Types are automatically available from Vite    |
+// | Needed for TypeScript to understand `VITE_` vars | TS already understands Vite env vars           |
+// | Could define **custom vars** here                | Still can, by creating a new `.d.ts` if needed |
+// This tsconfig.app.json is optimized for a modern Vite + React + TypeScript frontend, focusing on performance, safety, and clean code.
+
+
+
+// tsconfig.app.json  ---> Frontend React App
+//   - Uses DOM types
+//   - Uses Vite client types
+//   - Includes src/
+
+// tsconfig.node.json ---> Backend / Node scripts
+//   - Uses Node types
+//   - Includes vite.config.ts
+//   - No DOM types

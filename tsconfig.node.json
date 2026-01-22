@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "ES2023",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "types": ["node"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["vite.config.ts"]
+}
+
+
+// | Option                         | Value                                           | What It Does                                               | Why It’s Used                                                        |
+// | ------------------------------ | ----------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------- |
+// | `tsBuildInfoFile`              | `./node_modules/.tmp/tsconfig.node.tsbuildinfo` | Stores incremental build info for faster TypeScript checks | Speeds up repeated builds/checks in Node tooling                     |
+// | `target`                       | `ES2023`                                        | Sets output JS version to ES2023                           | Enables modern JS features in Node                                   |
+// | `lib`                          | `["ES2023"]`                                    | Includes built-in JS APIs for ES2023                       | Needed for latest JS features (like `Promise.any`, `AggregateError`) |
+// | `module`                       | `ESNext`                                        | Uses native ES modules (`import/export`)                   | Required for modern Node ESM projects, like Vite config              |
+// | `types`                        | `["node"]`                                      | Adds Node.js types                                         | Allows Node globals (`process`, `Buffer`, etc.) without errors       |
+// | `skipLibCheck`                 | `true`                                          | Skips type-checking `node_modules`                         | Faster builds and less noise from external typings                   |
+// | `moduleResolution`             | `bundler`                                       | Resolves modules as a bundler would                        | Matches how Vite handles imports                                     |
+// | `allowImportingTsExtensions`   | `true`                                          | Allows `.ts` extensions in imports                         | Needed for native ESM support with TS                                |
+// | `verbatimModuleSyntax`         | `true`                                          | Keeps import/export exactly as written                     | Prevents TS from changing module syntax                              |
+// | `moduleDetection`              | `force`                                         | Treats all files as modules                                | Avoids accidental global scope                                       |
+// | `noEmit`                       | `true`                                          | Prevents output JS files                                   | Vite handles compilation; no need for TS to emit                     |
+// | `strict`                       | `true`                                          | Enables all strict type-checks                             | Makes Node code safer and catches errors early                       |
+// | `noUnusedLocals`               | `true`                                          | Throws error for unused variables                          | Keeps code clean                                                     |
+// | `noUnusedParameters`           | `true`                                          | Throws error for unused function params                    | Avoids messy APIs                                                    |
+// | `erasableSyntaxOnly`           | `true`                                          | Only TS syntax, removable safely                           | Works well with bundlers like Vite                                   |
+// | `noFallthroughCasesInSwitch`   | `true`                                          | Prevents fall-through in `switch`                          | Avoids logic bugs                                                    |
+// | `noUncheckedSideEffectImports` | `true`                                          | Warns if import may cause hidden side-effects              | Helps safer Node modules                                             |
+// | `include`                      | `["vite.config.ts"]`                            | Type-check only Node-related files                         | Focused on Vite tooling, not app code                                |
